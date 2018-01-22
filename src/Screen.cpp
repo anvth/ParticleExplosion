@@ -20,8 +20,8 @@ bool Screen::init() {
 	}
 
 	m_window = SDL_CreateWindow("Particle Fire Explosion",
-	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH,
-			WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+	SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_HEIGHT,
+			WINDOW_WIDTH, SDL_WINDOW_SHOWN);
 
 	if (m_window == NULL) {
 		cout << "Failed to create window" << endl;
@@ -39,7 +39,7 @@ bool Screen::init() {
 	}
 
 	m_texture = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGBA8888,
-			SDL_TEXTUREACCESS_STATIC, WINDOW_WIDTH, WINDOW_HEIGHT);
+			SDL_TEXTUREACCESS_STATIC, WINDOW_HEIGHT, WINDOW_WIDTH);
 	if (m_texture == NULL) {
 		cout << "Failed to create Texture" << endl;
 		SDL_DestroyRenderer(m_renderer);

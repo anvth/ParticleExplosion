@@ -24,7 +24,16 @@ int main(){
     	// update particles
 
     	// draw particles
-    	screen.setPixel(400, 300, 255, 255, 255);
+    	int elapsed = SDL_GetTicks();
+    	unsigned char red = (unsigned char)((1 + sin(elapsed * 0.0001)) * 128);
+    	unsigned char green = (unsigned char)((1 + sin(elapsed * 0.001)) * 128);
+    	unsigned char blue = (unsigned char)((1 + sin(elapsed * 0.003)) * 128);
+
+    	for (int y=0; y<Screen::WINDOW_HEIGHT; y++){
+    		for(int x=0; x<Screen::WINDOW_WIDTH; x++){
+    			screen.setPixel(x, y, red, green, blue);
+    		}
+    	}
 
     	// draw the screen
     	screen.update();
