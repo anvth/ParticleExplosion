@@ -22,7 +22,13 @@ int main(){
 
     while(true){
     	// update particles
+
     	// draw particles
+    	screen.setPixel(400, 300, 255, 255, 255);
+
+    	// draw the screen
+    	screen.update();
+
     	// check for messages/events
     	if (screen.processEvent() == false){
     		break;
