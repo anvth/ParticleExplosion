@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/ParticleExplosion.cpp 
+../src/ParticleExplosion.cpp \
+../src/Screen.cpp 
 
 OBJS += \
-./src/ParticleExplosion.o 
+./src/ParticleExplosion.o \
+./src/Screen.o 
 
 CPP_DEPS += \
-./src/ParticleExplosion.d 
+./src/ParticleExplosion.d \
+./src/Screen.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
