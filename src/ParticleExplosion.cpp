@@ -30,6 +30,8 @@ int main(){
     	// update particles
 
     	// draw particles
+    	screen.clear();
+    	swarm.update();
     	const Particle * const pParticles = swarm.getParticles();
     	for (int i=0; i<Swarm::NPARTICLES; i++){
     		Particle particle = pParticles[i];
