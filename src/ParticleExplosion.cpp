@@ -1,67 +1,71 @@
 //============================================================================
-// Name        : ParticleExplosion.cpp
-// Author      : Anvith
+// Name        : SDL.cpp
+// Author      : Anvith Shivakumara
 // Version     :
-// Copyright   : Your copyright notice
-// Description : Particle Explosion in C++, Ansi-style
+// Copyright   : MIT
+// Description : Particle Explosion
 //============================================================================
 
 #include <iostream>
+#include <math.h>
 #include <stdlib.h>
 #include <time.h>
+
 #include "SDL2/SDL.h"
 
-#include "Screen.h"
 #include "Swarm.h"
+#include "Screen.h"
 
 using namespace std;
+using namespace particleexplosion;
 
-int main(){
+int main() {
+
 	srand(time(NULL));
+
 	Screen screen;
 
-	if(screen.init() == false){
-		cout << "Error Initializing SDL" << endl;
+	if (screen.init() == false) {
+		cout << "Error initialising SDL." << endl;
 	}
 
 	Swarm swarm;
 
-    while(true){
-    	// update particles
+	while (true) {
+		// Update particles
+		// Draw particles
 
-    	// draw particles
-    	screen.clear();
-    	swarm.update();
-    	const Particle * const pParticles = swarm.getParticles();
-    	for (int i=0; i<Swarm::NPARTICLES; i++){
-    		Particle particle = pParticles[i];
+		int elapsed = SDL_GetTicks();
 
-    		int x = (particle.m_x + 1) * Screen::WINDOW_WIDTH/2;
-    		int y = (particle.m_y + 1) * Screen::WINDOW_WIDTH/2;
+		screen.clear();
+		swarm.update();
 
-    		screen.setPixel(x, y , 0, 255, 0);
-    	}
-//    	int elapsed = SDL_GetTicks();
-//    	unsigned char red = (unsigned char)((1 + sin(elapsed * 0.0001)) * 128);
-//    	unsigned char green = (unsigned char)((1 + sin(elapsed * 0.001)) * 128);
-//    	unsigned char blue = (unsigned char)((1 + sin(elapsed * 0.003)) * 128);
-//
-//    	for (int y=0; y<Screen::WINDOW_HEIGHT; y++){
-//    		for(int x=0; x<Screen::WINDOW_WIDTH; x++){
-//    			screen.setPixel(x, y, red, green, blue);
-//    		}
-//    	}
+		unsigned char green =
+				(unsigned char) ((1 + sin(elapsed * 0.0001)) * 128);
+		unsigned char red = (unsigned char) ((1 + sin(elapsed * 0.0002)) * 128);
+		unsigned char blue = (unsigned char) ((1 + sin(elapsed * 0.0003)) * 128);
 
-    	// draw the screen
-    	screen.update();
+		const Particle * const pParticles = swarm.getParticles();
 
-    	// check for messages/events
-    	if (screen.processEvent() == false){
-    		break;
-    	}
-    }
+		for (int i = 0; i < Swarm::NPARTICLES; i++) {
+			Particle particle = pParticles[i];
 
-    screen.close();
+			int x = (particle.m_x + 1) * Screen::SCREEN_WIDTH / 2;
+			int y = (particle.m_y + 1) * Screen::SCREEN_HEIGHT / 2;
 
-    return 0;
+			screen.setPixel(x, y, red, green, blue);
+		}
+
+		// Draw the screen
+		screen.update();
+
+		// Check for messages/events
+		if (screen.processEvents() == false) {
+			break;
+		}
+	}
+
+	screen.close();
+
+	return 0;
 }

@@ -1,15 +1,9 @@
-/*
- * Particle.h
- *
- *  Created on: 25-Jan-2018
- *      Author: anvith
- */
-
 #ifndef PARTICLE_H_
 #define PARTICLE_H_
 
+namespace particleexplosion {
+
 struct Particle {
-public:
 	double m_x;
 	double m_y;
 
@@ -21,5 +15,7 @@ public:
 	virtual ~Particle();
 	void update();
 };
+
+} /* namespace caveofprogramming */
 
 #endif /* PARTICLE_H_ */
