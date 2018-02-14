@@ -38,7 +38,7 @@ int main() {
 		int elapsed = SDL_GetTicks();
 
 		screen.clear();
-		swarm.update();
+		swarm.update(elapsed);
 
 		unsigned char green =
 				(unsigned char) ((1 + sin(elapsed * 0.0001)) * 128);
